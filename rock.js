@@ -15,7 +15,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection , computerSelection) {
-    if (playerSelection.toUpperCase() == "ROCK" && computerSelection.toUpperCase() == "ROCK") {
+    if (playerSelection.toUpperCase() == computerSelection.toUpperCase()) {
         return "tight";
     }
     else if (playerSelection.toUpperCase() == "ROCK" && computerSelection.toUpperCase() == "SCISSORS") {
@@ -28,49 +28,45 @@ function playRound(playerSelection , computerSelection) {
         return "won";
     }
     else if (playerSelection.toUpperCase() == "ROCK" && computerSelection.toUpperCase() == "PAPER") {
-
         return "lose";
     }
     else if (playerSelection.toUpperCase() == "PAPER" && computerSelection.toUpperCase() == "SCISSORS") {
-
         return "lose"
     }
     else if (playerSelection.toUpperCase() == "SCISSORS" && computerSelection.toUpperCase() == "ROCK") {
-
         return "lose";
     }
-    else if (playerSelection.toUpperCase() == "PAPER" && computerSelection.toUpperCase() == "PAPER") {
-        return "tight";
-    }
-    else if (playerSelection.toUpperCase() == "SCISSORS" && computerSelection.toUpperCase() == "SCISSORS") {
-        return "tight";
-    }
-    else {"Error"}
+
+    else { return "Error"}
 
 }
 
 function game() {
-    let score = 0;
+    let wins = 0;
+    let loses = 0;
     for (let i = 0; i < 5 ; i++) {
         let computerSelection = getComputerChoice();
         let playerSelection = prompt("Pick Rock , Paper or Scissors: ");
         let round = playRound(playerSelection, computerSelection);
         if (round === "won") {
-            score++;
+            wins++;
             console.log("win")
         } 
         else if (round === "lose") {
-            score--;
+            loses++;
             console.log("lost")
         }
         else {console.log("tight")}
-        console.log(score)
+        console.log(wins,loses)
         
     }
-    if (score > 2) {
+    if (wins > loses) {
         return "You won Congrats!"
     }
-    else {return "Hardluck!"}
+    else if (loses > wins) {
+        return "HardLuck!"
+    }
+    else {return "tight!"}
 }
 
 console.log(game())
