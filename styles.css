@@ -1,0 +1,51 @@
+body{
+    background-color:#4CAF50;
+}
+
+button{
+    background-color:gray;
+    border:#4CAF50;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+    border-style: dashed;
+    border: 2px solid red;
+    border-radius: 5px;
+}
+#selections {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+#title{
+    text-align: center;
+    color:red;
+    font-size: 70px;
+}
+#winner{
+    font-size: 40px;
+}
+#info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    font-size: 25px;
+
+}

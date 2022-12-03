@@ -15,25 +15,32 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection , computerSelection) {
-    if (playerSelection.toUpperCase() == computerSelection.toUpperCase()) {
+    if (rockButton.id.toUpperCase() == computerSelection.toUpperCase()) {
+        console.log("tight")
         return "tight";
     }
     else if (playerSelection.toUpperCase() == "ROCK" && computerSelection.toUpperCase() == "SCISSORS") {
+        console.log("won")
         return "won";
     }
     else if (playerSelection.toUpperCase() == "PAPER" && computerSelection.toUpperCase() == "ROCK") {
+        console.log("won")
         return "won";
     }
     else if (playerSelection.toUpperCase() == "SCISSORS" && computerSelection.toUpperCase() == "PAPER") {
+        console.log("won")
         return "won";
     }
     else if (playerSelection.toUpperCase() == "ROCK" && computerSelection.toUpperCase() == "PAPER") {
+        console.log("lose")
         return "lose";
     }
     else if (playerSelection.toUpperCase() == "PAPER" && computerSelection.toUpperCase() == "SCISSORS") {
+        console.log("lose")
         return "lose"
     }
     else if (playerSelection.toUpperCase() == "SCISSORS" && computerSelection.toUpperCase() == "ROCK") {
+        console.log("lose")
         return "lose";
     }
 
@@ -41,32 +48,113 @@ function playRound(playerSelection , computerSelection) {
 
 }
 
-function game() {
-    let wins = 0;
-    let loses = 0;
-    for (let i = 0; i < 5 ; i++) {
-        let computerSelection = getComputerChoice();
-        let playerSelection = prompt("Pick Rock , Paper or Scissors: ");
-        let round = playRound(playerSelection, computerSelection);
-        if (round === "won") {
-            wins++;
-            console.log("win")
-        } 
-        else if (round === "lose") {
-            loses++;
-            console.log("lost")
+const rockButton = document.querySelector('#rock')
+const paperButton = document.querySelector('#paper')
+const scissorsButton = document.querySelector('#scissors')
+let computreScore = document.querySelector('#computerScore')
+let myScore = document.querySelector('#myScore')
+let winnerMessage = document.querySelector('#winner')
+let player1 = 0;
+let player2 = 0;
+
+myScore.textContent = 0;
+computreScore.textContent = 0;
+rockButton.addEventListener('click', () => {
+    let winner = playRound(rockButton.id, getComputerChoice())
+    if (winner === "won") {
+        player1++
+        myScore.textContent = player1
+        if (player1 === 5){
+            winnerMessage.textContent = "Congratultaion You Won!"
+            myScore.textContent = 0;
+            computreScore.textContent = 0;
+            player1 = 0;
+            player2 = 0; 
         }
-        else {console.log("tight")}
-        console.log(wins,loses)
+        else {winnerMessage.textContent = ""}
+    }
+    else if (winner === "lose"){
+        player2++
+        computreScore.textContent = player2
+        if (player2 === 5){
+            winnerMessage.textContent = "HardLuck You Lost!"
+            myScore.textContent = 0;
+            computreScore.textContent = 0;
+            player1 = 0;
+            player2 = 0;
+        }
+        else {winnerMessage.textContent = ""}
+    }
+        
         
     }
-    if (wins > loses) {
-        return "You won Congrats!"
-    }
-    else if (loses > wins) {
-        return "HardLuck!"
-    }
-    else {return "tight!"}
-}
+)
 
-console.log(game())
+paperButton.addEventListener('click', () => {
+    let winner = playRound(rockButton.id, getComputerChoice())
+    if (winner === "won") {
+        player1++
+        myScore.textContent = player1
+        if (player1 === 5){
+            winnerMessage.textContent = "Congratultaion You Won!"
+            myScore.textContent = 0;
+            computreScore.textContent = 0;
+            player1 = 0;
+            player2 = 0;
+            
+        }
+        else {winnerMessage.textContent = ""}
+    }
+    else if (winner === "lose"){
+        player2++
+        computreScore.textContent = player2
+        if (player2 === 5){
+            winnerMessage.textContent = "HardLuck You Lost!"
+            myScore.textContent = 0;
+            computreScore.textContent = 0;
+            player1 = 0;
+            player2 = 0;
+            
+        }
+        else {winnerMessage.textContent = ""}
+    }
+    }
+)
+
+scissorsButton.addEventListener('click', () => {
+    let winner = playRound(rockButton.id, getComputerChoice())
+    if (winner === "won") {
+        player1++
+        myScore.textContent = player1
+        if (player1 === 5){
+            winnerMessage.textContent = "Congratultaion You Won!"
+            myScore.textContent = 0;
+            computreScore.textContent = 0;
+            player1 = 0;
+            player2 = 0;
+        }
+        else {winnerMessage.textContent = ""}
+    }
+    else if (winner === "lose"){
+        player2++
+        computreScore.textContent = player2
+        if (player2 === 5){
+            winnerMessage.textContent = "HardLuck You Lost!"
+            myScore.textContent = 0;
+            computreScore.textContent = 0;
+            player1 = 0;
+            player2 = 0;
+        }
+        else {winnerMessage.textContent = ""}
+    }
+    }
+
+)
+
+
+
+
+
+
+
+
